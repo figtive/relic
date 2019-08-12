@@ -1,3 +1,53 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entity/guard/Guard.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=4]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.281667 )
+colors = PoolColorArray( 0.0183997, 0.429688, 0.362211, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+width = 1
 
 [node name="Main" type="Node"]
+
+[node name="Guard" parent="." instance=ExtResource( 1 )]
+position = Vector2( 44.2165, 50.3031 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( -6.85537, 115.827 )
+scale = Vector2( 20, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Floor/CollisionShape2D"]
+scale = Vector2( 20, 20 )
+texture = SubResource( 6 )
+
+[node name="Floor3" type="StaticBody2D" parent="."]
+position = Vector2( 325.893, 266.506 )
+scale = Vector2( 20, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Floor3/CollisionShape2D"]
+scale = Vector2( 20, 20 )
+texture = SubResource( 6 )
+
+[node name="Floor2" type="StaticBody2D" parent="."]
+position = Vector2( 141.785, 138.979 )
+rotation = -0.439823
+scale = Vector2( 20, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Floor2/CollisionShape2D"]
+scale = Vector2( 20, 20 )
+texture = SubResource( 6 )

@@ -15,8 +15,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="relic"
+config/name="Relic"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=400
+window/size/height=300
 
 [rendering]
 
