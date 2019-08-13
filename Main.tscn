@@ -18,9 +18,21 @@ width = 1
 position = Vector2( 44.2165, 50.3031 )
 scale = Vector2( 0.2, 0.2 )
 
+[node name="Camera2D" type="Camera2D" parent="Guard"]
+position = Vector2( 3.46008, -20.3049 )
+rotation = -0.439823
+scale = Vector2( 100, 5 )
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 8.0
+offset_v = -0.18
+editor_draw_drag_margin = true
+
 [node name="Floor" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( -6.85537, 115.827 )
-scale = Vector2( 20, 1 )
+scale = Vector2( 27.56, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 4 )
@@ -30,8 +42,8 @@ scale = Vector2( 20, 20 )
 texture = SubResource( 6 )
 
 [node name="Floor3" type="StaticBody2D" parent="."]
-position = Vector2( 325.893, 266.506 )
-scale = Vector2( 20, 1 )
+position = Vector2( 498.036, 272.467 )
+scale = Vector2( 35.64, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3"]
 shape = SubResource( 4 )
@@ -43,7 +55,7 @@ texture = SubResource( 6 )
 [node name="Floor2" type="StaticBody2D" parent="."]
 position = Vector2( 141.785, 138.979 )
 rotation = -0.439823
-scale = Vector2( 20, 1 )
+scale = Vector2( 33.7809, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2"]
 shape = SubResource( 4 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/guard_walk.png-aeb7afed1d9af4b75fbad5a6027a562a.stex"
+path="res://.import/guard_jump.png-5d8dfb3a9132bb454551e3b7c0880e7d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/guard/sprites/walk/guard_walk.png"
-dest_files=[ "res://.import/guard_walk.png-aeb7afed1d9af4b75fbad5a6027a562a.stex" ]
+source_file="res://entity/guard/sprites/jump/guard_jump.png"
+dest_files=[ "res://.import/guard_jump.png-5d8dfb3a9132bb454551e3b7c0880e7d.stex" ]
 
 [params]
 
