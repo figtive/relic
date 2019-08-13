@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://entity/guard/Guard.gd" type="Script" id=1]
+[ext_resource path="res://entity/Person.gd" type="Script" id=1]
 [ext_resource path="res://entity/guard/sprites/idle/guard_idle.png" type="Texture" id=2]
 [ext_resource path="res://entity/guard/sprites/jump/guard_jump.png" type="Texture" id=3]
 [ext_resource path="res://entity/guard/sprites/walk/guard_walk.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=1]
 resource_name = "Fall"
 length = 0.001
 tracks/0/type = "value"
@@ -45,7 +45,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
@@ -85,7 +85,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=3]
 resource_name = "Jump"
 length = 0.001
 tracks/0/type = "value"
@@ -125,8 +125,7 @@ tracks/2/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Walk"
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -166,60 +165,60 @@ tracks/2/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=17]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 90.0
 height = 200.0
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeTimeScale" id=7]
+[sub_resource type="AnimationNodeTimeScale" id=10]
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeBlendTree" id=11]
 graph_offset = Vector2( -357.48, 153.697 )
-nodes/Animation/node = SubResource( 6 )
+nodes/Animation/node = SubResource( 9 )
 nodes/Animation/position = Vector2( 110, 130 )
-nodes/TimeScale/node = SubResource( 7 )
+nodes/TimeScale/node = SubResource( 10 )
 nodes/TimeScale/position = Vector2( 320, 140 )
 nodes/output/position = Vector2( 530, 100 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-
-[sub_resource type="AnimationNodeStateMachine" id=9]
-states/Fall/node = SubResource( 20 )
+[sub_resource type="AnimationNodeStateMachine" id=19]
+states/Fall/node = SubResource( 6 )
 states/Fall/position = Vector2( 321.5, 269.5 )
-states/Idle/node = SubResource( 11 )
+states/Idle/node = SubResource( 7 )
 states/Idle/position = Vector2( 393.5, 100.906 )
-states/Jump/node = SubResource( 21 )
+states/Jump/node = SubResource( 8 )
 states/Jump/position = Vector2( 662.25, 269.5 )
-states/Walk/node = SubResource( 8 )
+states/Walk/node = SubResource( 11 )
 states/Walk/position = Vector2( 596, 100.25 )
-transitions = [ "Idle", "Walk", SubResource( 15 ), "Walk", "Idle", SubResource( 16 ), "Walk", "Jump", SubResource( 22 ), "Jump", "Fall", SubResource( 24 ), "Fall", "Idle", SubResource( 25 ), "Fall", "Walk", SubResource( 26 ), "Idle", "Jump", SubResource( 23 ) ]
+transitions = [ "Idle", "Walk", SubResource( 12 ), "Walk", "Idle", SubResource( 13 ), "Walk", "Jump", SubResource( 14 ), "Jump", "Fall", SubResource( 15 ), "Fall", "Idle", SubResource( 16 ), "Fall", "Walk", SubResource( 17 ), "Idle", "Jump", SubResource( 18 ) ]
 start_node = "Idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
 [node name="Guard" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -233,18 +232,18 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fall = SubResource( 18 )
-anims/Idle = SubResource( 5 )
-anims/Jump = SubResource( 19 )
-anims/Walk = SubResource( 1 )
+anims/Fall = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Walk = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 17 )
+shape = SubResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 19 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 10 )
+parameters/playback = SubResource( 20 )
 parameters/Walk/TimeScale/scale = 2.2

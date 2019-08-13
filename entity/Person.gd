@@ -3,15 +3,17 @@ extends KinematicBody2D
 enum Movement {IDLE, WALK_RIGHT, WALK_LEFT, JUMP, FALL}
 
 const GRAVITY = 30.0
-const JUMP_POWER = -500.0
-const WALK_ACCEL = 30
-const AIR_FRICTION = 0.05
-const GROUND_FRICTION = 0.25
-const MAX_SPEED_X = 400
-const MAX_SPEED_Y = 700
+export(float) var JUMP_POWER = -500.0
+export(float) var WALK_ACCEL = 30
+export(float) var AIR_FRICTION = 0.05
+export(float) var GROUND_FRICTION = 0.25
+export(float) var MAX_SPEED_X = 400
+export(float) var MAX_SPEED_Y = 700
 
 var current_movement
-export var velocity = Vector2()
+var velocity = Vector2()
+
+export(bool) var active = false
 
 func _ready():
 	$AnimationTree.set_active(true)
@@ -19,9 +21,9 @@ func _ready():
 
 func _physics_process(delta):
 	var idling = false
-	var go_left = Input.is_action_pressed("ui_left")
-	var go_right = Input.is_action_pressed("ui_right")
-	var go_jump = Input.is_action_just_pressed("ui_up")
+	var go_left = Input.is_action_pressed("ui_left") and active
+	var go_right = Input.is_action_pressed("ui_right") and active
+	var go_jump = Input.is_action_just_pressed("ui_up") and active
 	
 	velocity.y += GRAVITY
 	
@@ -51,6 +53,7 @@ func _physics_process(delta):
 	velocity.x = clamp(velocity.x, -MAX_SPEED_X, MAX_SPEED_X)
 	velocity.y = clamp(velocity.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	get_path()
 	
 func update_animation(state):
 	var state_machine = $AnimationTree.get("parameters/playback")
