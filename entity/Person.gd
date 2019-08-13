@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 enum Movement {IDLE, WALK_RIGHT, WALK_LEFT, JUMP, FALL}
 
-const GRAVITY = 30.0
 export(float) var JUMP_POWER = -500.0
 export(float) var WALK_ACCEL = 30
 export(float) var AIR_FRICTION = 0.05
@@ -25,7 +24,8 @@ func _physics_process(delta):
 	var go_right = Input.is_action_pressed("ui_right") and active
 	var go_jump = Input.is_action_just_pressed("ui_up") and active
 	
-	velocity.y += GRAVITY
+	
+	velocity.y += GameManager.current_level.GRAVITY
 	
 	if not go_left and go_right:
 		update_animation(Movement.WALK_RIGHT)
@@ -53,7 +53,6 @@ func _physics_process(delta):
 	velocity.x = clamp(velocity.x, -MAX_SPEED_X, MAX_SPEED_X)
 	velocity.y = clamp(velocity.y, -MAX_SPEED_Y, MAX_SPEED_Y)
 	velocity = move_and_slide(velocity, Vector2(0, -1))
-	get_path()
 	
 func update_animation(state):
 	var state_machine = $AnimationTree.get("parameters/playback")

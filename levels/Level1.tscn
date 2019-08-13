@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://manager/LevelController.gd" type="Script" id=1]
 [ext_resource path="res://gui/fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://manager/CameraController.gd" type="Script" id=3]
 [ext_resource path="res://entity/guard/Guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entity/door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entity/door/DoorTexture.tres" type="Texture" id=6]
+[ext_resource path="res://entity/door/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -23,8 +27,10 @@ width = 1
 
 [node name="Level1" type="Node"]
 script = ExtResource( 1 )
+GRAVITY = 25.0
 
 [node name="GUI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="LabelX" type="Label" parent="GUI"]
 margin_left = 2.0
@@ -42,19 +48,18 @@ margin_bottom = 57.0
 custom_fonts/font = SubResource( 1 )
 text = "Text"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1597.82, 179.562 )
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 1599.5, 179.562 )
 scale = Vector2( 0.2, 0.2 )
 current = true
 zoom = Vector2( 1.5, 1.5 )
 process_mode = 0
-smoothing_enabled = true
-smoothing_speed = 4.0
+smoothing_speed = 12.0
 offset_v = -0.18
-drag_margin_left = 0.05
-drag_margin_top = 0.05
-drag_margin_right = 0.05
-drag_margin_bottom = 0.05
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
 editor_draw_drag_margin = true
 script = ExtResource( 3 )
 
@@ -66,6 +71,15 @@ scale = Vector2( 0.2, 0.2 )
 modulate = Color( 0.301961, 1, 0.329412, 1 )
 position = Vector2( 387.67, 288.089 )
 scale = Vector2( 0.2, 0.2 )
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
+position = Vector2( 271.734, -192.067 )
+texture = ExtResource( 6 )
+single_use = true
+
+[node name="Key" parent="." instance=ExtResource( 7 )]
+position = Vector2( 43.7816, -192.132 )
+texture = ExtResource( 8 )
 
 [node name="Floor" type="Node" parent="."]
 editor/display_folded = true

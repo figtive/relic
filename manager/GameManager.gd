@@ -1,5 +1,6 @@
 extends Node
 
+enum KeyType {Red, Green, Blue, Yellow, Orange, Purple}
 enum Level {MAIN_MENU, LEVEL_1, LEVEL_2}
 
 const LevelPath = {
@@ -8,13 +9,11 @@ const LevelPath = {
 	Level.LEVEL_2: "",
 }
 
-var current_scene = null
+var current_level: Node = null
 
 func _ready():
 	var root = get_tree().get_root()
-	current_scene = root.get_child(root.get_child_count() - 1)
-	print("AUTOLOAD")
-	
+	current_level = root.get_child(root.get_child_count() - 1)
 
 func set_level(level):
 	match level:
@@ -31,17 +30,8 @@ func set_level(level):
 			printerr("GameManager :: Unknown level!")
 			
 func _deferred_scene_change(path):
-	# It is now safe to remove the current scene
-	current_scene.free()
-	
-	# Load the new scene.
+	current_level.free()
 	var s = ResourceLoader.load(path)
-	
-	# Instance the new scene.
-	current_scene = s.instance()
-	
-	# Add it to the active scene, as child of root.
-	get_tree().get_root().add_child(current_scene)
-	
-	# Optionally, to make it compatible with the SceneTree.change_scene() API.
-	get_tree().set_current_scene(current_scene)
+	current_level = s.instance()
+	get_tree().get_root().add_child(current_level)
+	get_tree().set_current_scene(current_level)
