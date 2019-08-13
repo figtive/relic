@@ -3,15 +3,15 @@ extends KinematicBody2D
 enum Movement {IDLE, WALK_RIGHT, WALK_LEFT, JUMP, FALL}
 
 const GRAVITY = 30.0
-const JUMP_POWER = -400.0
+const JUMP_POWER = -500.0
 const WALK_ACCEL = 30
 const AIR_FRICTION = 0.05
 const GROUND_FRICTION = 0.25
 const MAX_SPEED_X = 400
-const MAX_SPEED_Y = 500
+const MAX_SPEED_Y = 700
 
 var current_movement
-var velocity = Vector2()
+export var velocity = Vector2()
 
 func _ready():
 	$AnimationTree.set_active(true)
