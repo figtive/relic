@@ -1,33 +1,122 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://manager/LevelController.gd" type="Script" id=1]
-[ext_resource path="res://gui/fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://manager/CameraController.gd" type="Script" id=3]
-[ext_resource path="res://entity/guard/Guard.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entity/door/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entity/door/DoorTexture.tres" type="Texture" id=6]
-[ext_resource path="res://entity/door/Key.tscn" type="PackedScene" id=7]
-[ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://levels/tiles/SampleTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://light.png" type="Texture" id=3]
+[ext_resource path="res://manager/CameraController.gd" type="Script" id=4]
+[ext_resource path="res://entity/guard/Guard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entity/door/Door.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entity/key/Key.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entity/key/sprites/key_0.png" type="Texture" id=8]
+[ext_resource path="res://entity/key/sprites/key_1.png" type="Texture" id=9]
+[ext_resource path="res://gui/fonts/FiraCode-Regular.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.821429 )
+colors = PoolColorArray( 0.21875, 0.21875, 0.21875, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.392857 )
+colors = PoolColorArray( 0.964844, 0.768271, 0.0972135, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 10
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.744898 )
+colors = PoolColorArray( 0.319205, 0.859375, 0.099575, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+width = 10
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
+size = 72
 use_mipmaps = true
 use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0.281667 )
-colors = PoolColorArray( 0.0183997, 0.429688, 0.362211, 1 )
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-width = 1
+font_data = ExtResource( 10 )
 
 [node name="Level1" type="Node"]
 script = ExtResource( 1 )
-GRAVITY = 25.0
+GRAVITY = 50.0
+
+[node name="Background" type="Sprite" parent="."]
+visible = false
+position = Vector2( 164.402, 52.0469 )
+scale = Vector2( 1963.28, 1963.28 )
+texture = SubResource( 3 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 752.01, -355.031 )
+scale = Vector2( 0.5, 0.5 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 256, 256 )
+cell_quadrant_size = 1
+format = 1
+tile_data = PoolIntArray( -65524, 536870913, 0, -65523, 536870913, 0, -65522, 536870913, 0, -65521, 536870913, 0, -65520, 536870913, 0, 17, 536870913, 0, 18, 536870913, 0, 19, 536870913, 0, 20, 536870913, 0, 65559, 536870913, 0, 131094, 536870913, 0, 196629, 536870913, 0, 327665, 536870916, 0, 327666, 536870916, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 536870912, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262152, 536870917, 0, 262153, 536870917, 0, 262154, 536870917, 0, 262164, 536870913, 0, 393202, 536870916, 0, 393203, 536870916, 0, 327687, 536870912, 0, 327688, 536870917, 0, 327689, 536870917, 0, 327690, 536870917, 0, 327699, 536870913, 0, 458739, 536870916, 0, 458740, 536870916, 0, 393222, 536870912, 0, 393223, 536870912, 0, 393224, 536870917, 0, 393225, 536870917, 0, 393226, 536870917, 0, 393234, 536870913, 0, 524276, 536870916, 0, 524277, 536870916, 0, 458757, 536870912, 0, 458758, 536870912, 0, 458759, 536870912, 0, 458760, 536870917, 0, 458761, 536870917, 0, 458762, 536870917, 0, 458769, 536870913, 0, 589813, 536870916, 0, 589814, 536870916, 0, 524290, 536870914, 0, 524291, 536870914, 0, 524292, 536870914, 0, 524293, 536870914, 0, 524294, 536870914, 0, 524295, 536870914, 0, 524296, 536870914, 0, 524297, 536870914, 0, 524298, 536870914, 0, 524304, 536870913, 0, 655350, 536870916, 0, 655351, 536870916, 0, 589839, 536870913, 0, 720887, 536870916, 0, 720888, 536870915, 0, 720889, 536870915, 0, 720890, 536870915, 0, 720891, 536870915, 0, 720892, 536870915, 0, 720893, 536870915, 0, 720894, 536870915, 0, 655374, 536870913, 0, 786424, 536870915, 0, 786425, 536870915, 0, 786426, 536870915, 0, 786427, 536870915, 0, 786428, 536870915, 0, 786429, 536870915, 0, 786430, 536870915, 0, 786431, 536870915, 0, 720896, 536870915, 0, 720897, 536870915, 0, 720898, 536870915, 0, 720909, 536870913, 0, 786437, 536870917, 0, 786438, 536870917, 0, 786439, 536870917, 0, 786442, 536870917, 0, 786443, 536870917, 0, 786444, 536870917, 0, 851973, 536870917, 0, 851974, 536870917, 0, 851975, 536870917, 0, 851978, 536870917, 0, 851979, 536870917, 0, 851980, 536870917, 0 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( -244.417, -432.668 )
+scale = Vector2( 27.0195, -15.4805 )
+texture = ExtResource( 3 )
+energy = 1.42
+range_height = 27.3
+shadow_enabled = true
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 1710.03, -232.302 )
+current = true
+process_mode = 0
+smoothing_enabled = true
+smoothing_speed = 10.0
+offset_v = -0.18
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_drag_margin = true
+script = ExtResource( 4 )
+
+[node name="Guard" parent="." instance=ExtResource( 5 )]
+position = Vector2( -88.6422, -362.79 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.301961, 1, 0.329412, 1 )
+position = Vector2( 752.01, -355.031 )
+
+[node name="Door" parent="." instance=ExtResource( 6 )]
+position = Vector2( 553.548, 123.52 )
+key_type = 3
+texture = SubResource( 5 )
+single_use = true
+
+[node name="Door3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 438.329, 124.088 )
+key_type = 3
+texture = SubResource( 5 )
+single_use = true
+
+[node name="Door2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 938.778, 123.52 )
+key_type = 1
+texture = SubResource( 7 )
+single_use = true
+
+[node name="Key" parent="." instance=ExtResource( 7 )]
+position = Vector2( 331.758, 800.823 )
+key_type = 3
+texture = ExtResource( 8 )
+
+[node name="Key2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2418.4, -642.375 )
+key_type = 1
+texture = ExtResource( 9 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -42,181 +131,8 @@ text = "Text"
 
 [node name="LabelY" type="Label" parent="GUI"]
 margin_left = 2.0
-margin_top = 25.0
-margin_right = 137.0
-margin_bottom = 57.0
+margin_top = 70.0
+margin_right = 174.0
+margin_bottom = 166.0
 custom_fonts/font = SubResource( 1 )
 text = "Text"
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 1599.5, 179.562 )
-scale = Vector2( 0.2, 0.2 )
-current = true
-zoom = Vector2( 1.5, 1.5 )
-process_mode = 0
-smoothing_speed = 12.0
-offset_v = -0.18
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
-editor_draw_drag_margin = true
-script = ExtResource( 3 )
-
-[node name="Guard" parent="." instance=ExtResource( 4 )]
-position = Vector2( -115.023, -206.644 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-modulate = Color( 0.301961, 1, 0.329412, 1 )
-position = Vector2( 387.67, 288.089 )
-scale = Vector2( 0.2, 0.2 )
-
-[node name="Door" parent="." instance=ExtResource( 5 )]
-position = Vector2( 271.734, -192.067 )
-texture = ExtResource( 6 )
-single_use = true
-
-[node name="Key" parent="." instance=ExtResource( 7 )]
-position = Vector2( 43.7816, -192.132 )
-texture = ExtResource( 8 )
-
-[node name="Floor" type="Node" parent="."]
-editor/display_folded = true
-
-[node name="Floor" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( -6.85537, 115.827 )
-scale = Vector2( 27.56, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor6" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 459.37, 52.2758 )
-scale = Vector2( 5.54, 2.82 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor6"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor6/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor7" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 590.307, -24.9718 )
-scale = Vector2( 5.54, 2.82 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor7"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor7/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor8" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 725.627, -96.1931 )
-scale = Vector2( 5.54, 2.82 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor8"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor8/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor3" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 498.584, 235.213 )
-scale = Vector2( 35.64, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor3"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor3/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor9" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 178.637, -142.259 )
-scale = Vector2( 35.64, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor9"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor9/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor5" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 73.4482, 342.045 )
-scale = Vector2( 35.64, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor5"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor5/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor2" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( 236.564, 75.976 )
-rotation = -0.439823
-scale = Vector2( 9.501, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor2"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor2/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )
-
-[node name="Floor4" type="StaticBody2D" parent="Floor"]
-editor/display_folded = true
-position = Vector2( -361.694, 212.94 )
-rotation = 0.397935
-scale = Vector2( 33.7809, 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor4"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor4/CollisionShape2D"]
-scale = Vector2( 20, 20 )
-texture = SubResource( 4 )

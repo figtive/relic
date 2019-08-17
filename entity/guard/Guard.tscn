@@ -165,8 +165,9 @@ tracks/2/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="RectangleShape2D" id=21]
-extents = Vector2( 100, 190 )
+[sub_resource type="CapsuleShape2D" id=21]
+radius = 50.0
+height = 100.0
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Fall"
@@ -220,12 +221,15 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=20]
 
 [node name="Guard" type="KinematicBody2D"]
-collision_layer = 3
-collision_mask = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+JUMP_POWER = -1100.0
+WALK_ACCEL = 45.0
+AIR_FRICTION = 0.08
+MAX_SPEED_X = 900.0
+MAX_SPEED_Y = 2000.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_process_mode = 0
@@ -240,12 +244,11 @@ shape = SubResource( 21 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 19 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 process_mode = 0
 parameters/playback = SubResource( 20 )
 parameters/Walk/TimeScale/scale = 2.2
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2.89062, 0 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 hframes = 2
