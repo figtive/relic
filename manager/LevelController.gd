@@ -33,6 +33,7 @@ func change_zone(to_future):
 		$Future.set_global_scale(Vector2(0, 0))
 
 func claim_key(player, key_type):
+	print("player gets key %s" % key_type)
 	key_owner[player] = key_type
 
 func has_key(player, key_type):

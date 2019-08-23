@@ -10,4 +10,4 @@ func _ready():
 	
 func claim(body):
 	GameManager.current_level.claim_key(body, key_type)
-	hide()
+	queue_free()
