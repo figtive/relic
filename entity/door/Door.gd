@@ -9,7 +9,7 @@ export(bool) var single_use
 onready var detector = $Area2D
 
 func _ready():
-	$Sprite.texture = texture
+#	$Sprite.texture = texture
 	if not detector.is_connected("body_entered",  self, "open_door"):
 		detector.connect("body_entered", self, "open_door")
 	if not detector.is_connected("body_exited",  self, "close_door"):
